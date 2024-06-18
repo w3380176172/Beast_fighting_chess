@@ -22,11 +22,11 @@ qt_add_qml_module(
   Beast_fighting_chess
   VERSION
   1.0
-  QML_FILES
-  Main.qml
   SOURCES
   QML_FILES
-  Beast_fighting_chess.js)
+  Beast_fighting_chess.js
+  QML_FILES
+  Board.qml)
 
 target_compile_features(appBeast_fighting_chess PRIVATE cxx_std_20)
 
