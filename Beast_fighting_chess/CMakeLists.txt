@@ -10,12 +10,11 @@ find_package(Qt6 REQUIRED COMPONENTS LinguistTools)
 
 qt_standard_project_setup(REQUIRES 6.7)
 
-qt_add_executable(appBeast_fighting_chess Beast_fighting_chess_zh_CN.ts
-                  main.cpp)
+qt_add_executable(appBeast_fighting_chess main.cpp
+                  Beast_fighting_chess_zh_CN.ts)
 
-qt_add_translations(appBeast_fighting_chess TS_FILES
-                    ../../qtdev/freetext_zh_CN.ts)
-
+qt_create_translation(QM_FILES ${CMAKE_SOURCE_DIR}
+                      Beast_fighting_chess_zh_CN.ts)
 qt_add_qml_module(
   appBeast_fighting_chess
   URI
@@ -26,7 +25,12 @@ qt_add_qml_module(
   QML_FILES
   Beast_fighting_chess.js
   QML_FILES
-  Board.qml)
+  Board.qml
+  QML_FILES
+  Main.qml
+  SOURCES main.cpp
+  RESOURCES Image.qrc
+  QML_FILES Chess.qml)
 
 target_compile_features(appBeast_fighting_chess PRIVATE cxx_std_20)
 

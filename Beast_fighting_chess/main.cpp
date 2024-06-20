@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
-    engine.loadFromModule("Beast_fighting_chess", "Board");
+    engine.loadFromModule("Beast_fighting_chess", "Main");
 
     return app.exec();
 }

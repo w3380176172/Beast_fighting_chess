@@ -1,38 +1,86 @@
-import QtQuick 2.15
-import QtQuick.Controls 2.15
-import QtQuick.Layouts 1.15
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
-ApplicationWindow {
-    visible: true
+Item {
+    id:root
+    width: 700;
+    height: 900
+    anchors.centerIn: parent //棋盘居中
+    //添加棋盘图片
+    Image {
+        id: chessboard
+        anchors.centerIn: parent
         width: 700
         height: 900
-        title: "斗兽棋"
+        source: "qrc:/images/map.jpg"
 
-        Rectangle {
-            anchors.fill: parent
-            color: "red" // 设置背景为黄色
+    }
+    //红鼠
+    Chess {
+        id: red_Mouse
+        actar: true
+        type: 1
+        x:0
+        y:200
+        width: 100
+        height: 100
 
-            Grid {
-                id: chessBoard
-                rows: 9
-                columns: 7
-                anchors.centerIn: parent
-                spacing: 1
+    }
+    //红猫
+    Chess {
+        id: red_Cat
+        actar: true
+        type: 2
+        x:500
+        y:100
+        width: 100
+        height: 100
 
-                Repeater {
-                    model: 63 // 7x9的棋盘有63个格子
-                    delegate: Rectangle {
-                        width: 80
-                        height: 80
-                        color: (index % 2 === 0) ? "white" : "lightgray" // 交替颜色，白色和浅灰色
+    }
+    //红狗
+    Chess{
+        id: red_Dog
+        actar: true
+        type: 3
+        width: 100
+        height: 100
+        x:100
+        y:100
 
-                        Text {
-                            anchors.centerIn: parent
-                            text: index
-                            color: "black"
-                        }
-                    }
-                }
-            }
-        }
+    }
+    //红狼
+    Chess{
+        id: red_Wolf
+        actar: true
+        type: 4
+        width: 100
+        height: 100
+        x:400
+        y:200
+
+    }
+    //红豹
+    Chess{
+        id: red_Leopard
+        actar: true
+        type: 5
+        width: 100
+        height: 100
+        x:200
+        y:200
+
+    }
+    //红虎
+    Chess{
+        id: red_Tiger
+        actar: true
+        type: 5
+        width: 100
+        height: 100
+        x:600
+        y:0
+
+    }
+
 }
