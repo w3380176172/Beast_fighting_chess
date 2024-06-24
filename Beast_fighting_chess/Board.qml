@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import "Beast_fighting_chess.js" as Controller
 
 Item {
     id:board
@@ -9,12 +10,30 @@ Item {
     anchors.centerIn: parent //棋盘居中
     //棋盘图片
     Image {
+        property double lastX:-1
+        property double lastY:-1
+        property int sequence: 0   //实现回合制，走一步加一
+        property bool selected:false   //表示被选中，实现棋子的移动
         id: chessboard
         anchors.centerIn: parent
         width: 630
         height: 810
         source: "qrc:/images/map.jpg"
 
+    }
+
+    MouseArea{
+        anchors.fill: parent
+        onClicked: {
+            chessboard.selected=true
+            //提取calculate中重复代码
+            function caculating(Chess,dx,dy){
+
+            }//实现棋子移动事件
+            function caculate(Chess,Chessboard){
+
+            }
+        }
     }
 
     //游戏方为蓝方，棋子为蓝色棋子
@@ -26,7 +45,12 @@ Item {
         height: 80
         x:10
         y:188
+        Actions{
+            onClicked: {
+                Controller.caculate(blue_Mouse,board)
 
+            }
+        }
     }
     Chess {
         id: blue_Cat
@@ -179,5 +203,4 @@ Item {
         y:540
 
     }
-
 }

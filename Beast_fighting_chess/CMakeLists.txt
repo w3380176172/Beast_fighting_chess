@@ -30,7 +30,9 @@ qt_add_qml_module(
   Main.qml
   SOURCES main.cpp
   RESOURCES Image.qrc
-  QML_FILES Chess.qml)
+  QML_FILES Chess.qml
+  QML_FILES
+  QML_FILES Actions.qml )
 
 target_compile_features(appBeast_fighting_chess PRIVATE cxx_std_20)
 

@@ -5,6 +5,8 @@ Item {
     id:chess
     property int level
     property bool gamer
+    property double lastX:-1 //记录当前位置的中心点x坐标
+    property double lastY:-1 //记录当前位置的中心点y坐标
 
     Image{
         anchors.fill: parent
