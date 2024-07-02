@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import "Beast_fighting_chess.js" as Bfc
 
 Item {
     id:board
@@ -18,64 +19,28 @@ Item {
         width: 630
         height: 810
         source: "qrc:/images/map.jpg"
-        //蓝方先动，判断蓝方玩家只能在chessboard.round%2=1的情况下移动，红方玩家只能在chessboard.round%2=0的情况下移动
-        function gamerjudge(Chess){
-            if(chessboard.round%2==1&&Chess.gamer===true){
-                Chess.state=false
-            }
-            else if(chessboard.round%2==0&&Chess.gamer===false)
-            {
-                Chess.state=false
-            }
-        }
+
 
         MouseArea{
             anchors.fill: parent
             onClicked: {
                 chessboard.state=true
-                //实现坐标改变
-                function coordinate(Chess,dx,dy){
-                    Chess.x+=dx
-                    Chess.y+=dy
-                    Chess.middleX=Chess.x+45
-                    Chess.middleY=Chess.y+45
-                    Chess.state=false
-                    chessboard.round+=1
-                }
-                //实现棋子移动
-                function move(Chess,Chessboard){
-                    var a=(Math.floor(mouseX/90)*90)
-                    var b=(Math.floor(mouseY/90)*90)
-                    var c=a+45
-                    var dx=a+45-Chess.middleX
-                    var dy=b+45-Chess.middleY
-                    chessboard.gamerjudge(Chess)
-                    //棋子在地图移动
-                    if(Chess.state&&Chessboard.state){
-                        if((Math.abs(dx)==90&&Math.abs(dy)==0)||(Math.abs(dy)==90&&Math.abs(dx)==0)){
-                            coordinate(Chess,dx,dy)
-                        }
-                        else{
-                            Chess.state=false
-                        }
-                    }
-                }
-                move(blue_Mouse,parent)
-                move(blue_Cat,parent)
-                move(blue_Dog,parent)
-                move(blue_Wolf,parent)
-                move(blue_Leopard,parent)
-                move(blue_Tiger,parent)
-                move(red_Mouse,parent)
-                move(blue_Lion,parent)
-                move(blue_Elephant,parent)
-                move(red_Cat,parent)
-                move(red_Dog,parent)
-                move(red_Wolf,parent)
-                move(red_Leopard,parent)
-                move(red_Tiger,parent)
-                move(red_Lion,parent)
-                move(red_Elephant,parent)
+                Bfc.move(blue_Mouse,parent,mouseX,mouseY)
+                Bfc.move(blue_Cat,parent,mouseX,mouseY)
+                Bfc.move(blue_Dog,parent,mouseX,mouseY)
+                Bfc.move(blue_Wolf,parent,mouseX,mouseY)
+                Bfc.move(blue_Leopard,parent,mouseX,mouseY)
+                Bfc.move(blue_Tiger,parent,mouseX,mouseY)
+                Bfc.move(red_Mouse,parent,mouseX,mouseY)
+                Bfc.move(blue_Lion,parent,mouseX,mouseY)
+                Bfc.move(blue_Elephant,parent,mouseX,mouseY)
+                Bfc.move(red_Cat,parent,mouseX,mouseY)
+                Bfc.move(red_Dog,parent,mouseX,mouseY)
+                Bfc.move(red_Wolf,parent,mouseX,mouseY)
+                Bfc.move(red_Leopard,parent,mouseX,mouseY)
+                Bfc.move(red_Tiger,parent,mouseX,mouseY)
+                Bfc.move(red_Lion,parent,mouseX,mouseY)
+                Bfc.move(red_Elephant,parent,mouseX,mouseY)
                 chessboard.state=false
             }
 

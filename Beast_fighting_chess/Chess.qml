@@ -9,7 +9,6 @@ Item {
     property double middleX:0  //记录当前位置的中心点x坐标
     property double middleY:0  //记录当前位置的中心点y坐标
     property bool state:false  //棋子状态，true为可移动，false不可移动
-
     Image{
         anchors.fill: parent
         source: {
