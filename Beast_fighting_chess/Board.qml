@@ -13,7 +13,6 @@ Item {
         property double middleX:0
         property double middleY:0
         property int round: 0  //回合数，走一步加一
-        property bool state:false  //棋子的状态，true可移动，false不可移动
         id: chessboard
         anchors.centerIn: parent
         width: 630
@@ -24,7 +23,6 @@ Item {
         MouseArea{
             anchors.fill: parent
             onClicked: {
-                chessboard.state=true
                 Bfc.move(blue_Mouse,parent,mouseX,mouseY)
                 Bfc.move(blue_Cat,parent,mouseX,mouseY)
                 Bfc.move(blue_Dog,parent,mouseX,mouseY)
@@ -41,7 +39,6 @@ Item {
                 Bfc.move(red_Tiger,parent,mouseX,mouseY)
                 Bfc.move(red_Lion,parent,mouseX,mouseY)
                 Bfc.move(red_Elephant,parent,mouseX,mouseY)
-                chessboard.state=false
             }
 
             //游戏方为蓝方，棋子为蓝色棋子
@@ -55,7 +52,14 @@ Item {
                 y:188
                 Actions{
                     onClicked: {
-
+                        Bfc.eatChess(blue_Mouse,red_Mouse,chessboard)
+                        Bfc.eatChess(blue_Mouse,red_Cat,chessboard)
+                        Bfc.eatChess(blue_Mouse,red_Dog,chessboard)
+                        Bfc.eatChess(blue_Mouse,red_Wolf,chessboard)
+                        Bfc.eatChess(blue_Mouse,red_Leopard,chessboard)
+                        Bfc.eatChess(blue_Mouse,red_Tiger,chessboard)
+                        Bfc.eatChess(blue_Mouse,red_Lion,chessboard)
+                        Bfc.eatChess(blue_Mouse,red_Elephant,chessboard)
                     }
                 }
             }
@@ -69,7 +73,14 @@ Item {
                 y:99
                 Actions{
                     onClicked: {
-
+                        Bfc.eatChess(blue_Cat,red_Mouse,chessboard)
+                        Bfc.eatChess(blue_Cat,red_Cat,chessboard)
+                        Bfc.eatChess(blue_Cat,red_Dog,chessboard)
+                        Bfc.eatChess(blue_Cat,red_Wolf,chessboard)
+                        Bfc.eatChess(blue_Cat,red_Leopard,chessboard)
+                        Bfc.eatChess(blue_Cat,red_Tiger,chessboard)
+                        Bfc.eatChess(blue_Cat,red_Lion,chessboard)
+                        Bfc.eatChess(blue_Cat,red_Elephant,chessboard)
                     }
                 }
             }
@@ -83,7 +94,14 @@ Item {
                 y:99
                 Actions{
                     onClicked: {
-
+                        Bfc.eatChess(blue_Dog,red_Mouse,chessboard)
+                        Bfc.eatChess(blue_Dog,red_Cat,chessboard)
+                        Bfc.eatChess(blue_Dog,red_Dog,chessboard)
+                        Bfc.eatChess(blue_Dog,red_Wolf,chessboard)
+                        Bfc.eatChess(blue_Dog,red_Leopard,chessboard)
+                        Bfc.eatChess(blue_Dog,red_Tiger,chessboard)
+                        Bfc.eatChess(blue_Dog,red_Lion,chessboard)
+                        Bfc.eatChess(blue_Dog,red_Elephant,chessboard)
                     }
                 }
             }
@@ -97,7 +115,14 @@ Item {
                 y:188
                 Actions{
                     onClicked: {
-
+                        Bfc.eatChess(blue_Wolf,red_Mouse,chessboard)
+                        Bfc.eatChess(blue_Wolf,red_Cat,chessboard)
+                        Bfc.eatChess(blue_Wolf,red_Dog,chessboard)
+                        Bfc.eatChess(blue_Wolf,red_Wolf,chessboard)
+                        Bfc.eatChess(blue_Wolf,red_Leopard,chessboard)
+                        Bfc.eatChess(blue_Wolf,red_Tiger,chessboard)
+                        Bfc.eatChess(blue_Wolf,red_Lion,chessboard)
+                        Bfc.eatChess(blue_Wolf,red_Elephant,chessboard)
                     }
                 }
             }
@@ -111,7 +136,14 @@ Item {
                 y:188
                 Actions{
                     onClicked: {
-
+                        Bfc.eatChess(blue_Leopard,red_Mouse,chessboard)
+                        Bfc.eatChess(blue_Leopard,red_Cat,chessboard)
+                        Bfc.eatChess(blue_Leopard,red_Dog,chessboard)
+                        Bfc.eatChess(blue_Leopard,red_Wolf,chessboard)
+                        Bfc.eatChess(blue_Leopard,red_Leopard,chessboard)
+                        Bfc.eatChess(blue_Leopard,red_Tiger,chessboard)
+                        Bfc.eatChess(blue_Leopard,red_Lion,chessboard)
+                        Bfc.eatChess(blue_Leopard,red_Elephant,chessboard)
                     }
                 }
             }
@@ -125,7 +157,14 @@ Item {
                 y:10
                 Actions{
                     onClicked: {
-
+                        Bfc.eatChess(blue_Tiger,red_Mouse,chessboard)
+                        Bfc.eatChess(blue_Tiger,red_Cat,chessboard)
+                        Bfc.eatChess(blue_Tiger,red_Dog,chessboard)
+                        Bfc.eatChess(blue_Tiger,red_Wolf,chessboard)
+                        Bfc.eatChess(blue_Tiger,red_Leopard,chessboard)
+                        Bfc.eatChess(blue_Tiger,red_Tiger,chessboard)
+                        Bfc.eatChess(blue_Tiger,red_Lion,chessboard)
+                        Bfc.eatChess(blue_Tiger,red_Elephant,chessboard)
                     }
                 }
             }
@@ -139,7 +178,14 @@ Item {
                 y:10
                 Actions{
                     onClicked: {
-
+                        Bfc.eatChess(blue_Lion,red_Mouse,chessboard)
+                        Bfc.eatChess(blue_Lion,red_Cat,chessboard)
+                        Bfc.eatChess(blue_Lion,red_Dog,chessboard)
+                        Bfc.eatChess(blue_Lion,red_Wolf,chessboard)
+                        Bfc.eatChess(blue_Lion,red_Leopard,chessboard)
+                        Bfc.eatChess(blue_Lion,red_Tiger,chessboard)
+                        Bfc.eatChess(blue_Lion,red_Lion,chessboard)
+                        Bfc.eatChess(blue_Lion,red_Elephant,chessboard)
                     }
                 }
             }
@@ -153,7 +199,14 @@ Item {
                 y:188
                 Actions{
                     onClicked: {
-
+                        Bfc.eatChess(blue_Elephant,red_Mouse,chessboard)
+                        Bfc.eatChess(blue_Elephant,red_Cat,chessboard)
+                        Bfc.eatChess(blue_Elephant,red_Dog,chessboard)
+                        Bfc.eatChess(blue_Elephant,red_Wolf,chessboard)
+                        Bfc.eatChess(blue_Elephant,red_Leopard,chessboard)
+                        Bfc.eatChess(blue_Elephant,red_Tiger,chessboard)
+                        Bfc.eatChess(blue_Elephant,red_Mouse,chessboard)
+                        Bfc.eatChess(blue_Elephant,red_Elephant,chessboard)
                     }
                 }
             }
@@ -169,7 +222,14 @@ Item {
                 y:542
                 Actions{
                     onClicked: {
-
+                        Bfc.eatChess(red_Mouse,blue_Mouse,chessboard)
+                        Bfc.eatChess(red_Mouse,blue_Cat,chessboard)
+                        Bfc.eatChess(red_Mouse,blue_Dog,chessboard)
+                        Bfc.eatChess(red_Mouse,blue_Wolf,chessboard)
+                        Bfc.eatChess(red_Mouse,blue_Leopard,chessboard)
+                        Bfc.eatChess(red_Mouse,blue_Tiger,chessboard)
+                        Bfc.eatChess(red_Mouse,blue_Lion,chessboard)
+                        Bfc.eatChess(red_Mouse,blue_Elephant,chessboard)
                     }
                 }
             }
@@ -184,7 +244,14 @@ Item {
             y:630
             Actions{
                 onClicked: {
-
+                    Bfc.eatChess(red_Cat,blue_Mouse,chessboard)
+                    Bfc.eatChess(red_Cat,blue_Cat,chessboard)
+                    Bfc.eatChess(red_Cat,blue_Dog,chessboard)
+                    Bfc.eatChess(red_Cat,blue_Wolf,chessboard)
+                    Bfc.eatChess(red_Cat,blue_Leopard,chessboard)
+                    Bfc.eatChess(red_Cat,blue_Tiger,chessboard)
+                    Bfc.eatChess(red_Cat,blue_Lion,chessboard)
+                    Bfc.eatChess(red_Cat,blue_Elephant,chessboard)
                 }
             }
         }
@@ -198,7 +265,14 @@ Item {
             y:631
             Actions{
                 onClicked: {
-
+                    Bfc.eatChess(red_Dog,blue_Mouse,chessboard)
+                    Bfc.eatChess(red_Dog,blue_Cat,chessboard)
+                    Bfc.eatChess(red_Dog,blue_Dog,chessboard)
+                    Bfc.eatChess(red_Dog,blue_Wolf,chessboard)
+                    Bfc.eatChess(red_Dog,blue_Leopard,chessboard)
+                    Bfc.eatChess(red_Dog,blue_Tiger,chessboard)
+                    Bfc.eatChess(red_Dog,blue_Lion,chessboard)
+                    Bfc.eatChess(red_Dog,blue_Elephant,chessboard)
                 }
             }
         }
@@ -212,7 +286,14 @@ Item {
             y:541
             Actions{
                 onClicked: {
-
+                    Bfc.eatChess(red_Wolf,blue_Mouse,chessboard)
+                    Bfc.eatChess(red_Wolf,blue_Cat,chessboard)
+                    Bfc.eatChess(red_Wolf,blue_Dog,chessboard)
+                    Bfc.eatChess(red_Wolf,blue_Wolf,chessboard)
+                    Bfc.eatChess(red_Wolf,blue_Leopard,chessboard)
+                    Bfc.eatChess(red_Wolf,blue_Tiger,chessboard)
+                    Bfc.eatChess(red_Wolf,blue_Lion,chessboard)
+                    Bfc.eatChess(red_Wolf,blue_Elephant,chessboard)
                 }
             }
         }
@@ -226,7 +307,14 @@ Item {
             y:542
             Actions{
                 onClicked: {
-
+                    Bfc.eatChess(red_Leopard,blue_Mouse,chessboard)
+                    Bfc.eatChess(red_Leopard,blue_Cat,chessboard)
+                    Bfc.eatChess(red_Leopard,red_Dog,chessboard)
+                    Bfc.eatChess(red_Leopard,blue_Wolf,chessboard)
+                    Bfc.eatChess(red_Leopard,blue_Leopard,chessboard)
+                    Bfc.eatChess(red_Leopard,blue_Tiger,chessboard)
+                    Bfc.eatChess(red_Leopard,blue_Lion,chessboard)
+                    Bfc.eatChess(red_Leopard,blue_Elephant,chessboard)
                 }
             }
         }
@@ -240,7 +328,14 @@ Item {
             y:719
             Actions{
                 onClicked: {
-
+                    Bfc.eatChess(red_Tiger,blue_Mouse,chessboard)
+                    Bfc.eatChess(red_Tiger,blue_Cat,chessboard)
+                    Bfc.eatChess(red_Tiger,blue_Dog,chessboard)
+                    Bfc.eatChess(red_Tiger,blue_Wolf,chessboard)
+                    Bfc.eatChess(red_Tiger,blue_Leopard,chessboard)
+                    Bfc.eatChess(red_Tiger,blue_Tiger,chessboard)
+                    Bfc.eatChess(red_Tiger,blue_Lion,chessboard)
+                    Bfc.eatChess(red_Tiger,blue_Elephant,chessboard)
                 }
             }
         }
@@ -254,7 +349,14 @@ Item {
             y:720
             Actions{
                 onClicked: {
-
+                    Bfc.eatChess(red_Lion,blue_Mouse,chessboard)
+                    Bfc.eatChess(red_Lion,blue_Cat,chessboard)
+                    Bfc.eatChess(red_Lion,blue_Dog,chessboard)
+                    Bfc.eatChess(red_Lion,blue_Wolf,chessboard)
+                    Bfc.eatChess(red_Lion,blue_Leopard,chessboard)
+                    Bfc.eatChess(red_Lion,blue_Tiger,chessboard)
+                    Bfc.eatChess(red_Lion,blue_Lion,chessboard)
+                    Bfc.eatChess(red_Lion,blue_Elephant,chessboard)
                 }
             }
         }
@@ -268,7 +370,14 @@ Item {
             y:540
             Actions{
                 onClicked: {
-
+                    Bfc.eatChess(red_Elephant,blue_Mouse,chessboard)
+                    Bfc.eatChess(red_Elephant,blue_Cat,chessboard)
+                    Bfc.eatChess(red_Elephant,blue_Dog,chessboard)
+                    Bfc.eatChess(red_Elephant,blue_Wolf,chessboard)
+                    Bfc.eatChess(red_Elephant,blue_Leopard,chessboard)
+                    Bfc.eatChess(red_Elephant,blue_Tiger,chessboard)
+                    Bfc.eatChess(red_Elephant,blue_Mouse,chessboard)
+                    Bfc.eatChess(red_Elephant,blue_Elephant,chessboard)
                 }
             }
         }
