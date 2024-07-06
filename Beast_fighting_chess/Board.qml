@@ -1,206 +1,336 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-import "Beast_fighting_chess.js" as Controller
+import "Beast_fighting_chess.js" as Bfc
 
 Item {
     id:board
     width: 630;
     height: 810
-    anchors.centerIn: parent //棋盘居中
-    //棋盘图片
+    anchors.centerIn: parent
+    //棋盘
     Image {
-        property double lastX:-1
-        property double lastY:-1
-        property int sequence: 0   //实现回合制，走一步加一
-        property bool selected:false   //表示被选中，实现棋子的移动
+        property double middleX:0
+        property double middleY:0
+        property int round: 0  //回合数，走一步加一
         id: chessboard
         anchors.centerIn: parent
         width: 630
         height: 810
         source: "qrc:/images/map.jpg"
 
-    }
 
-    MouseArea{
-        anchors.fill: parent
-        onClicked: {
-            chessboard.selected=true
-            //提取calculate中重复代码
-            function caculating(Chess,dx,dy){
-
-            }//实现棋子移动事件
-            function caculate(Chess,Chessboard){
-
-            }
-        }
-    }
-
-    //游戏方为蓝方，棋子为蓝色棋子
-    Chess {
-        id: blue_Mouse
-        gamer: true
-        level: 1
-        width: 80
-        height: 80
-        x:10
-        y:188
-        Actions{
+        MouseArea{
+            anchors.fill: parent
             onClicked: {
-                Controller.caculate(blue_Mouse,board)
+                var Chess = [
+                            blue_Mouse, blue_Cat, blue_Dog, blue_Wolf, blue_Leopard, blue_Tiger, blue_Lion, blue_Elephant,
+                            red_Mouse, red_Cat, red_Dog, red_Wolf, red_Leopard, red_Tiger, red_Lion, red_Elephant
+                        ];
+
+                for (var i = 0; i < Chess.length; i++) {
+                    Bfc.move(Chess[i], parent, mouseX, mouseY);
+                }
+            }
+
+            //游戏方为蓝方，棋子为蓝色棋子
+            Chess {
+                id: blue_Mouse
+                gamer: true
+                level: 1
+                width: 90
+                height: 90
+                x:0
+                y:180
+                Actions{
+                    onClicked: {
+                        var redChess = [red_Mouse, red_Cat, red_Dog, red_Wolf, red_Leopard, red_Tiger, red_Lion, red_Elephant];
+
+                        for (var i = 0; i < redChess.length; i++) {
+                            Bfc.eatChess(blue_Mouse, redChess[i], chessboard);
+                        }
+                    }
+                }
+            }
+            Chess {
+                id: blue_Cat
+                gamer: true
+                level: 2
+                width: 90
+                height: 90
+                x:450
+                y:90
+                Actions{
+                    onClicked: {
+                        var redChess = [red_Mouse, red_Cat, red_Dog, red_Wolf, red_Leopard, red_Tiger, red_Lion, red_Elephant];
+
+                        for (var i = 0; i < redChess.length; i++) {
+                            Bfc.eatChess(blue_Cat, redChess[i], chessboard);
+                        }
+                    }
+                }
+            }
+            Chess{
+                id: blue_Dog
+                gamer: true
+                level: 3
+                width: 90
+                height: 90
+                x:90
+                y:90
+                Actions{
+                    onClicked: {
+                        var redChess = [red_Mouse, red_Cat, red_Dog, red_Wolf, red_Leopard, red_Tiger, red_Lion, red_Elephant];
+
+                        for (var i = 0; i < redChess.length; i++) {
+                            Bfc.eatChess(blue_Dog, redChess[i], chessboard);
+                        }
+                    }
+                }
+            }
+            Chess{
+                id: blue_Wolf
+                gamer: true
+                level: 4
+                width: 90
+                height: 90
+                x:360
+                y:180
+                Actions{
+                    onClicked: {
+                        var redChess = [red_Mouse, red_Cat, red_Dog, red_Wolf, red_Leopard, red_Tiger, red_Lion, red_Elephant];
+
+                        for (var i = 0; i < redChess.length; i++) {
+                            Bfc.eatChess(blue_Wolf, redChess[i], chessboard);
+                        }
+                    }
+                }
+            }
+            Chess{
+                id: blue_Leopard
+                gamer: true
+                level: 5
+                width: 90
+                height: 90
+                x:180
+                y:180
+                Actions{
+                    onClicked: {
+                        var redChess = [red_Mouse, red_Cat, red_Dog, red_Wolf, red_Leopard, red_Tiger, red_Lion, red_Elephant];
+
+                        for (var i = 0; i < redChess.length; i++) {
+                            Bfc.eatChess(blue_Leopard, redChess[i], chessboard);
+                        }
+                    }
+                }
+            }
+            Chess{
+                id: blue_Tiger
+                gamer: true
+                level: 6
+                width: 90
+                height: 90
+                x:540
+                y:0
+                Actions{
+                    onClicked: {
+                        var redChess = [red_Mouse, red_Cat, red_Dog, red_Wolf, red_Leopard, red_Tiger, red_Lion, red_Elephant];
+
+                        for (var i = 0; i < redChess.length; i++) {
+                            Bfc.eatChess(blue_Tiger, redChess[i], chessboard);
+                        }
+                    }
+                }
+            }
+            Chess{
+                id: blue_Lion
+                gamer: true
+                level: 7
+                width: 90
+                height: 90
+                x:0
+                y:0
+                Actions{
+                    onClicked: {
+                        var redChess = [red_Mouse, red_Cat, red_Dog, red_Wolf, red_Leopard, red_Tiger, red_Lion, red_Elephant];
+
+                        for (var i = 0; i < redChess.length; i++) {
+                            Bfc.eatChess(blue_Lion, redChess[i], chessboard);
+                        }
+                    }
+                }
+            }
+            Chess{
+                id: blue_Elephant
+                gamer: true
+                level: 8
+                width: 90
+                height: 90
+                x:540
+                y:180
+                Actions{
+                    onClicked: {
+                        var redChess = [red_Mouse, red_Cat, red_Dog, red_Wolf, red_Leopard, red_Tiger, red_Lion, red_Elephant];
+
+                        for (var i = 0; i < redChess.length; i++) {
+                            Bfc.eatChess(blue_Elephant, redChess[i], chessboard);
+                        }
+                    }
+                }
+            }
+
+            //游戏方为红方，棋子为红色棋子
+            Chess {
+                id: red_Mouse
+                gamer: false
+                level: 1
+                width: 90
+                height: 90
+                x:540
+                y:540
+                Actions{
+                    onClicked: {
+                        var blueChess = [blue_Mouse, blue_Cat, blue_Dog, blue_Wolf, blue_Leopard, blue_Tiger, blue_Lion, blue_Elephant];
+
+                        for (var i = 0; i < blueChess.length; i++) {
+                            Bfc.eatChess(red_Mouse, blueChess[i], chessboard);
+                        }
+                    }
+                }
+            }
+
+            Chess {
+                id: red_Cat
+                gamer: false
+                level: 2
+                width: 90
+                height: 90
+                x:90
+                y:630
+                Actions{
+                    onClicked: {
+                        var blueChess = [blue_Mouse, blue_Cat, blue_Dog, blue_Wolf, blue_Leopard, blue_Tiger, blue_Lion, blue_Elephant];
+
+                        for (var i = 0; i < blueChess.length; i++) {
+                            Bfc.eatChess(red_Cat, blueChess[i], chessboard);
+                        }
+                    }
+                }
+            }
+        }
+        Chess{
+            id: red_Dog
+            gamer: false
+            level: 3
+            width: 90
+            height: 90
+            x:450
+            y:630
+            Actions{
+                onClicked: {
+                    var blueChess = [blue_Mouse, blue_Cat, blue_Dog, blue_Wolf, blue_Leopard, blue_Tiger, blue_Lion, blue_Elephant];
+
+                    for (var i = 0; i < blueChess.length; i++) {
+                        Bfc.eatChess(red_Dog, blueChess[i], chessboard);
+                    }
+                }
 
             }
         }
-    }
-    Chess {
-        id: blue_Cat
-        gamer: true
-        level: 2
-        width: 80
-        height: 80
-        x:453
-        y:99
+        Chess{
+            id: red_Wolf
+            gamer: false
+            level: 4
+            width: 90
+            height: 90
+            x:180
+            y:540
+            Actions{
+                onClicked: {
+                    var blueChess = [blue_Mouse, blue_Cat, blue_Dog, blue_Wolf, blue_Leopard, blue_Tiger, blue_Lion, blue_Elephant];
 
-    }
-    Chess{
-        id: blue_Dog
-        gamer: true
-        level: 3
-        width: 80
-        height: 80
-        x:99
-        y:99
+                    for (var i = 0; i < blueChess.length; i++) {
+                        Bfc.eatChess(red_Wolf, blueChess[i], chessboard);
+                    }
 
-    }
-    Chess{
-        id: blue_Wolf
-        gamer: true
-        level: 4
-        width: 80
-        height: 80
-        x:364
-        y:188
+                }
+            }
+        }
+        Chess{
+            id: red_Leopard
+            gamer: false
+            level: 5
+            width: 90
+            height: 90
+            x:360
+            y:540
+            Actions{
+                onClicked: {
+                    var blueChess = [blue_Mouse, blue_Cat, blue_Dog, blue_Wolf, blue_Leopard, blue_Tiger, blue_Lion, blue_Elephant];
 
-    }
-    Chess{
-        id: blue_Leopard
-        gamer: true
-        level: 5
-        width: 80
-        height: 80
-        x:187
-        y:188
+                    for (var i = 0; i < blueChess.length; i++) {
+                        Bfc.eatChess(red_Leopard, blueChess[i], chessboard);
+                    }
 
-    }
-    Chess{
-        id: blue_Tiger
-        gamer: true
-        level: 6
-        width: 80
-        height: 80
-        x:542
-        y:10
+                }
+            }
+        }
+        Chess{
+            id: red_Tiger
+            gamer: false
+            level: 6
+            width: 90
+            height: 90
+            x:0
+            y:720
+            Actions{
+                onClicked: {
+                    var blueChess = [blue_Mouse, blue_Cat, blue_Dog, blue_Wolf, blue_Leopard, blue_Tiger, blue_Lion, blue_Elephant];
 
-    }
-    Chess{
-        id: blue_Lion
-        gamer: true
-        level: 7
-        width: 80
-        height: 80
-        x:10
-        y:10
+                    for (var i = 0; i < blueChess.length; i++) {
+                        Bfc.eatChess(red_Tiger, blueChess[i], chessboard);
+                    }
 
-    }
-    Chess{
-        id: blue_Elephant
-        gamer: true
-        level: 8
-        width: 80
-        height: 80
-        x:542
-        y:188
+                }
+            }
+        }
+        Chess{
+            id: red_Lion
+            gamer: false
+            level: 7
+            width: 90
+            height: 90
+            x:540
+            y:720
+            Actions{
+                onClicked: {
+                    var blueChess = [blue_Mouse, blue_Cat, blue_Dog, blue_Wolf, blue_Leopard, blue_Tiger, blue_Lion, blue_Elephant];
 
-    }
+                    for (var i = 0; i < blueChess.length; i++) {
+                        Bfc.eatChess(red_Lion, blueChess[i], chessboard);
+                    }
 
-    //游戏方为红方，棋子为红色棋子
-    Chess {
-        id: red_Mouse
-        gamer: false
-        level: 1
-        width: 80
-        height: 80
-        x:541
-        y:542
+                }
+            }
+        }
+        Chess{
+            id: red_Elephant
+            gamer: false
+            level: 8
+            width: 90
+            height: 90
+            x:0
+            y:540
+            Actions{
+                onClicked: {
+                    var blueChess = [blue_Mouse, blue_Cat, blue_Dog, blue_Wolf, blue_Leopard, blue_Tiger, blue_Lion, blue_Elephant];
 
-    }
-    Chess {
-        id: red_Cat
-        gamer: false
-        level: 2
-        width: 80
-        height: 80
-        x:99
-        y:630
+                    for (var i = 0; i < blueChess.length; i++) {
+                        Bfc.eatChess(red_Elephant, blueChess[i], chessboard);
+                    }
 
-    }
-    Chess{
-        id: red_Dog
-        gamer: false
-        level: 3
-        width: 80
-        height: 80
-        x:452
-        y:631
-
-    }
-    Chess{
-        id: red_Wolf
-        gamer: false
-        level: 4
-        width: 80
-        height: 80
-        x:187
-        y:541
-
-    }
-    Chess{
-        id: red_Leopard
-        gamer: false
-        level: 5
-        width: 80
-        height: 80
-        x:364
-        y:542
-
-    }
-    Chess{
-        id: red_Tiger
-        gamer: false
-        level: 6
-        width: 80
-        height: 80
-        x:9
-        y:719
-
-    }
-    Chess{
-        id: red_Lion
-        gamer: false
-        level: 7
-        width: 80
-        height: 80
-        x:541
-        y:720
-    }
-    Chess{
-        id: red_Elephant
-        gamer: false
-        level: 8
-        width: 80
-        height: 80
-        x:10
-        y:540
-
+                }
+            }
+        }
     }
 }

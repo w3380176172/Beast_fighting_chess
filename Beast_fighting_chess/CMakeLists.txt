@@ -27,7 +27,7 @@ qt_add_qml_module(
   QML_FILES
   Board.qml
   QML_FILES
-  Main.qml
+  Window.qml
   SOURCES main.cpp
   RESOURCES Image.qrc
   QML_FILES Chess.qml
