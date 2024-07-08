@@ -23,7 +23,7 @@ function isInRiver(x, y) {
 }
 
 // 玩家轮次判断
-function gamerjudge(Chess,x,y) {
+function gamerjudge(Chess) {
   if (chessboard.round % 2 == 1 && Chess.gamer === true) {
     Chess.state = false;
   } else if (chessboard.round % 2 == 0 && Chess.gamer === false) {
@@ -80,7 +80,7 @@ function changeCoordinate(Chess, dx, dy) {
   Chess.middleY = Chess.y + 45;
   Chess.state = false;
   chessboard.round += 1;
-  vectory(Chess);
+  vectory(chessboard);
 }
 
 // 定位老鼠位置
@@ -113,7 +113,7 @@ function jumpRiver(Chess, mouse, x) {
 
 // 实现棋子的吃与被吃
 function eatChess(eated, eating, chessboard) {
-  gamerjudge(eating);
+  gamerjudge(Chess);
   var x = (Math.floor(eated.x / 90) * 90) + 45;
   var ex = (Math.floor(eated.x / 90) * 90) + 45 - eating.middleX;
   var ey = (Math.floor(eated.y / 90) * 90) + 45 - eating.middleY;
@@ -176,37 +176,27 @@ function eat(eated, eating, ex, ey) {
   eated.state = false;
   eating.state = false;
   chessboard.round += 1;
-  vectory(eating);
+  vectory(chessboard);
 }
 // 判断胜利，棋子进入对方巢穴，或者一方没有棋子了
-function vectory() {
+function vectory(chessboard) {
     var redChess = [red_Mouse, red_Cat, red_Dog, red_Wolf, red_Leopard, red_Tiger, red_Lion, red_Elephant];
     var blueChess = [blue_Mouse, blue_Cat, blue_Dog, blue_Wolf, blue_Leopard, blue_Tiger, blue_Lion, blue_Elephant];
 
     var redVictory = redChess.some(Chess => isvectory(Chess));
     if (redVictory) {
-        console.log("红方取得胜利!");
-        return;
+        console.log("经过"+chessboard.round+"回合，红方取得胜利!");
+        return chessboard.vectorystate = 2;
     }
 
     var blueVictory = blueChess.some(Chess => isvectory(Chess));
     if (blueVictory) {
-        console.log("蓝方取得胜利!!!");
-        return;
+        console.log("经过"+chessboard.round+"回合，蓝方取得胜利!!!");
+        return chessboard.vectorystate = 1;
     }
 
-    var redDefeated = redChess.every(Chess => !Chess.visible);
-    if (redDefeated) {
-        console.log("蓝方取得胜利!!!");
-        return;
-    }
-
-    var blueDefeated = blueChess.every(Chess => !Chess.visible);
-    if (blueDefeated) {
-        console.log("红方取得胜利!");
-        return;
-    }
-    console.log("游戏继续");
+    console.log("当前回合为"+chessboard.round+",游戏继续");
+    return chessboard.vectorystate =0;
 }
 
 // 判断棋子是否进入对方巢穴
@@ -216,4 +206,56 @@ function isvectory(Chess) {
     } else {
         return Chess.middleX === 315 && Chess.middleY === 45;
     }
+}
+// 胜利状态判断
+function vectoryjudge(vectorystate){
+    if(vectorystate === 1){
+        blue_Vectory.visible = true;
+    }else if(vectorystate === 2){
+        red_Vectory.visible = true;
+    }
+}
+//初始化棋子
+function initChess(Chess,x,y)
+{
+    Chess.x=x
+    Chess.y=y
+    Chess.middleX=-1
+    Chess.middleY=-1
+    Chess.state=false
+    Chess.visible=true
+
+}//初始化棋盘
+function initChessboard(Chessboard)
+{
+    Chessboard.middleX=-1
+    Chessboard.middleY=-1
+    Chessboard.round=0
+}
+//棋局结束重新开始初始化棋盘和棋子
+function init() {
+    const chessPieces = [
+        { piece: red_Mouse, x: 540, y: 540 },
+        { piece: red_Cat, x: 90, y: 630 },
+        { piece: red_Dog, x: 450, y: 630 },
+        { piece: red_Wolf, x: 180, y: 540 },
+        { piece: red_Leopard, x: 360, y: 540 },
+        { piece: red_Tiger, x: 0, y: 720 },
+        { piece: red_Lion, x: 540, y: 720 },
+        { piece: red_Elephant, x: 0, y: 540 },
+        { piece: blue_Mouse, x: 0, y: 180 },
+        { piece: blue_Cat, x: 450, y: 90 },
+        { piece: blue_Dog, x: 90, y: 90 },
+        { piece: blue_Wolf, x: 360, y: 180 },
+        { piece: blue_Leopard, x: 180, y: 180 },
+        { piece: blue_Tiger, x: 540, y: 0 },
+        { piece: blue_Lion, x: 0, y: 0 },
+        { piece: blue_Elephant, x: 540, y: 180 }
+    ];
+
+    chessPieces.forEach(({ piece, x, y }) => {
+        initChess(piece, x, y);
+    });
+
+    initChessboard(chessboard);
 }

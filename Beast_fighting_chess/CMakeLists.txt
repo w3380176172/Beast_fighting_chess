@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.29)
 
 project(
   Beast_fighting_chess
-  VERSION 0.2
+  VERSION 0.3
   LANGUAGES CXX)
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Quick)
@@ -36,7 +36,8 @@ qt_add_qml_module(
   Chess.qml
   QML_FILES
   QML_FILES
-  Actions.qml)
+  Actions.qml
+  QML_FILES Start.qml)
 
 target_compile_features(appBeast_fighting_chess PRIVATE cxx_std_20)
 

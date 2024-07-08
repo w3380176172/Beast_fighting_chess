@@ -12,7 +12,11 @@ ApplicationWindow {
     color:"white"
 
     Board{
+        Start{
 
+        }
     }
+
+
 
 }
