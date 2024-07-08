@@ -17,5 +17,10 @@
         <file>images/red_Cat.jpg</file>
         <file>images/blue_Mouse.jpg</file>
         <file>images/red_Mouse.jpg</file>
+        <file>images/red_Vectory.png</file>
+        <file>images/quit.png</file>
+        <file>images/blue_Vectory.png</file>
+        <file>images/continue.png</file>
+        <file>images/start.jpg</file>
     </qresource>
 </RCC>

@@ -36,7 +36,8 @@ qt_add_qml_module(
   Chess.qml
   QML_FILES
   QML_FILES
-  Actions.qml)
+  Actions.qml
+  QML_FILES Start.qml)
 
 target_compile_features(appBeast_fighting_chess PRIVATE cxx_std_20)
 

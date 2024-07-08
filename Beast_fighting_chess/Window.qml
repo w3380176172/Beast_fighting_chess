@@ -11,7 +11,11 @@ ApplicationWindow {
     title: "斗兽棋"
     color:"white"
 
-    Board{}
+    Board{
+        Start{
+
+        }
+    }
 
 
 
