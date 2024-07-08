@@ -10,8 +10,6 @@ Item {
     anchors.centerIn: parent
     //棋盘
     Image {
-        property double middleX:0
-        property double middleY:0
         property int round: 0  //回合数，走一步加一
         property var vectorystate;
         id: chessboard

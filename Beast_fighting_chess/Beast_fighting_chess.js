@@ -185,17 +185,17 @@ function vectory(chessboard) {
 
     var redVictory = redChess.some(Chess => isvectory(Chess));
     if (redVictory) {
-        console.log("红方取得胜利!");
+        console.log("经过"+chessboard.round+"回合，红方取得胜利!");
         return chessboard.vectorystate = 2;
     }
 
     var blueVictory = blueChess.some(Chess => isvectory(Chess));
     if (blueVictory) {
-        console.log("蓝方取得胜利!!!");
+        console.log("经过"+chessboard.round+"回合，蓝方取得胜利!!!");
         return chessboard.vectorystate = 1;
     }
 
-    console.log("游戏继续");
+    console.log("当前回合为"+chessboard.round+",游戏继续");
     return chessboard.vectorystate =0;
 }
 
